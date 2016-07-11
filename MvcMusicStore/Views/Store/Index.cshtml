@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MvcMusicStore.Models.Genre>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List all genres</h2>
+<p>Select from @Model.Count() genres: </p>
+
+
+
+<ul>
+    
+</ul>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Header</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var genre in Model)
+            {
+               <tr> 
+                    <td>@genre.Name</td>
+                    <td>@Html.ActionLink("Consulter", "Browse", new {  genre = genre.Name})</td>
+               </tr>                
+            }
+            
+        </tbody>
+    </table>
+</div>
