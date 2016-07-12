@@ -35,3 +35,6 @@ c:\users\rchiquet\documents\visual studio 2013\Projects\MvcMusicStore\MvcMusicSt
 c:\users\rchiquet\documents\visual studio 2013\Projects\MvcMusicStore\MvcMusicStore\obj\Debug\MvcMusicStore.csprojResolveAssemblyReference.cache
 c:\users\rchiquet\documents\visual studio 2013\Projects\MvcMusicStore\MvcMusicStore\obj\Debug\MvcMusicStore.dll
 c:\users\rchiquet\documents\visual studio 2013\Projects\MvcMusicStore\MvcMusicStore\obj\Debug\MvcMusicStore.pdb
+C:\Users\rchiquet\Documents\Visual Studio 2013\Projects\Learning\MvcMusicStore\MvcMusicStore\obj\Debug\MvcMusicStore.csprojResolveAssemblyReference.cache
+C:\Users\rchiquet\Documents\Visual Studio 2013\Projects\Learning\MvcMusicStore\MvcMusicStore\obj\Debug\MvcMusicStore.dll
+C:\Users\rchiquet\Documents\Visual Studio 2013\Projects\Learning\MvcMusicStore\MvcMusicStore\obj\Debug\MvcMusicStore.pdb
