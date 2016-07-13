@@ -96,3 +96,4 @@ C:\Users\rchiquet\Documents\Visual Studio 2013\Projects\Learning\MvcMusicStore\M
 C:\Users\rchiquet\Documents\Visual Studio 2013\Projects\Learning\MvcMusicStore\MvcMusicStore\bin\EntityFramework.SqlServerCompact.dll
 C:\Users\rchiquet\Documents\Visual Studio 2013\Projects\Learning\MvcMusicStore\MvcMusicStore\bin\System.Data.SqlServerCe.dll
 C:\Users\rchiquet\Documents\Visual Studio 2013\Projects\Learning\MvcMusicStore\MvcMusicStore\bin\EntityFramework.SqlServerCompact.xml
+C:\Users\rchiquet\Documents\Visual Studio 2013\Projects\Learning\MvcMusicStore\MvcMusicStore\obj\Debug\MvcMusicStore.csprojResolveAssemblyReference.cache

@@ -9,3 +9,30 @@
 }
 
 <p>Browsing Genre: @Model.Name</p>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Price</th>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var album in Model.Albums)
+            {
+                <tr>
+                    <td>@album.Title</td>
+                    <td>@album.Price</td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new {id = album.AlbumId}) |
+                        @Html.ActionLink("Details", "Details", new { id = album.AlbumId }) |
+                        @Html.ActionLink("Delete", "Delete", new {id = album.AlbumId})
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

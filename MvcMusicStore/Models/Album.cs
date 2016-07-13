@@ -7,7 +7,7 @@ namespace MvcMusicStore.Models
 {
     public class Album
     {
-        public string AlbumId { get; set; }
+        public int AlbumId { get; set; }
         public string Title { get; set; }
         public int GenreId { get; set; }
         public int ArtistId { get; set; }
