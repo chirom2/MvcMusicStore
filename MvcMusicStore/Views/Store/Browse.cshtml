@@ -27,9 +27,13 @@
                     <td>@album.Price</td>
 
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new {id = album.AlbumId}) |
-                        @Html.ActionLink("Details", "Details", new { id = album.AlbumId }) |
-                        @Html.ActionLink("Delete", "Delete", new {id = album.AlbumId})
+                        @{
+                            
+                            
+                        }
+                        @Html.ActionLink("Edit", "Edit", "StoreManager",new {id = album.AlbumId}, new {id = album.AlbumId}) |
+                        @Html.ActionLink("Details", "Details", "StoreManager", new {id = album.AlbumId}, new { id = album.AlbumId }) |
+                        @Html.ActionLink("Delete", "Delete", "StoreManager", new {id = album.AlbumId}, new {id = album.AlbumId})
                     </td>
                 </tr>
             }
