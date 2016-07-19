@@ -1,4 +1,4 @@
-﻿@model MvcMusicStore.Models.Album
+﻿@model MvcMusicStore.ViewModels.EditVM
 
 @{
     ViewBag.Title = "Edit";
@@ -14,46 +14,42 @@
     <fieldset>
         <legend>Album</legend>
 
-        @Html.HiddenFor(model => model.AlbumId)
-
         <div class="editor-label">
-            @Html.LabelFor(model => model.Title)
+            @Html.LabelFor(model => model.title)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Title)
-            @Html.ValidationMessageFor(model => model.Title)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.GenreId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.GenreId)
-            @Html.ValidationMessageFor(model => model.GenreId)
+            @Html.EditorFor(model => model.title)
+            @Html.ValidationMessageFor(model => model.title)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ArtistId)
+            @Html.LabelFor(model => model.GenreList)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ArtistId)
-            @Html.ValidationMessageFor(model => model.ArtistId)
+            @Html.DropDownListFor(vm => vm.GenreId, Model.GenreList)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Price)
+            @Html.LabelFor(model => model.ArtistList)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Price)
-            @Html.ValidationMessageFor(model => model.Price)
+            @Html.DropDownListFor(vm => vm.ArtistId, Model.ArtistList)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.AlbumArtUrl)
+            @Html.LabelFor(model => model.price)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.AlbumArtUrl)
-            @Html.ValidationMessageFor(model => model.AlbumArtUrl)
+            @Html.EditorFor(model => model.price)
+            @Html.ValidationMessageFor(model => model.price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.albumArtUrl)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.albumArtUrl)
+            @Html.ValidationMessageFor(model => model.albumArtUrl)
         </div>
 
         <p>

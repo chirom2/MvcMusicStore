@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data;
 using System.Data.Entity;
 using MvcMusicStore.Models;
+using MvcMusicStore.ViewModels;
 
 namespace MvcMusicStore.Controllers
 {
@@ -29,56 +30,112 @@ namespace MvcMusicStore.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            using (var db = new MusicStoreEntities())
+            {
+                var items = db.Genres.Select(g => new
+                {
+                    Value = g.GenreId,
+                    Text = g.Name
+                });
+
+                var itemsArtist = db.Artists.Select(a => new
+                {
+                    Value = a.ArtistId,
+                    Text = a.Name
+                });
+
+                var listGenres = new SelectList(items.ToList(), "Value", "Text");
+                var listArtist = new SelectList(itemsArtist.ToList(), "Value", "Text");
+                var createVM = new CreateVM();
+                createVM.ArtistList = listArtist;
+                createVM.GenreList = listGenres;
+
+                return View(createVM);
+            }
         }
 
         //
         //POST : /StoreManager/Create
         [HttpPost]
-        public ActionResult Create(Album album)
+        public ActionResult Create(CreateVM vm)
         {
             using (var db = new MusicStoreEntities())
             {
                 if (ModelState.IsValid)
                 {
+                    var album = new Album();
+                    album.ArtistId = vm.ArtistId;
+                    album.GenreId = vm.GenreId;
+                    album.Title = vm.title;
+                    album.Price = vm.price;
+                    album.AlbumArtUrl = vm.albumArtUrl;
+
                     db.Albums.Add(album);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    return View();   
-                }                
+                    return View();
+                }
             }
         }
-        
-        
+
+
         //
         //GET /StoreManager/Edit/5
         public ActionResult Edit(int id = 0)
         {
             using (var db = new MusicStoreEntities())
             {
-                var album = db.Albums.Include(a => a.Genre).Include(a => a.Artist).Single(a => a.AlbumId == id);
-                return View(album);
+                var album = db.Albums.Include(a => a.Genre).Include(a => a.Artist)
+                    .Single(a => a.AlbumId == id);
+
+                var itemsGenres = db.Genres.Select(g => new {Value = g.GenreId, Text = g.Name});
+                var itemsArtist = db.Artists.Select(a => new { Value = a.ArtistId,Text = a.Name });
+
+                var editVM = new EditVM();
+                editVM.id = album.AlbumId;
+                editVM.title = album.Title;
+                editVM.ArtistId = album.ArtistId;
+                editVM.GenreId = album.GenreId;
+                editVM.price = album.Price;
+                editVM.albumArtUrl = album.AlbumArtUrl;
+                editVM.GenreList = new SelectList(itemsGenres.ToList(), "Value", "Text");
+                editVM.ArtistList = new SelectList(itemsArtist.ToList(), "Value", "Text");
+
+                return View(editVM);
             }
         }
 
         //
         //POST: /StoreManager/Edit/5
         [HttpPost]
-        public ActionResult Edit(Album album)
+        public ActionResult Edit(EditVM vm)
         {
             using (var db = new MusicStoreEntities())
             {
-                if (ModelState.IsValid)
-                {
-                    db.Entry(album).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                return View(album);
-            }            
+                    if (ModelState.IsValid)
+                    {
+
+
+                        var album = db.Albums.Single(a => a.AlbumId == vm.id);
+                        album.AlbumId = vm.id;
+                        album.ArtistId = vm.ArtistId;
+                        album.GenreId = vm.GenreId;
+                        album.Title = vm.title;
+                        album.Price = vm.price;
+                        album.AlbumArtUrl = vm.albumArtUrl;
+                        db.Entry(album).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                        
+                    }
+                    else
+                    {
+                        return View();
+                    }
+            }
         }
 
         //
@@ -91,9 +148,7 @@ namespace MvcMusicStore.Controllers
                 var album = db.Albums.Include(a => a.Genre).Include(a => a.Artist).Single(a => a.AlbumId == id);
                 //var album = db.Albums.Find(id);
                 return View(album);
-
             }
-
         }
 
         //
@@ -106,8 +161,8 @@ namespace MvcMusicStore.Controllers
                 Album album = db.Albums.Find(id);
                 return View(album);
             }
-            
-        }
+        }
+
 
         //
         //POST /StoreManager/Delete/5
@@ -123,6 +178,5 @@ namespace MvcMusicStore.Controllers
                 return RedirectToAction("Index");
             }
         }
-
     }
 }
