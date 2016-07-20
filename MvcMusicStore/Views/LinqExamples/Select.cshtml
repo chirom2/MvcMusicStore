@@ -1,0 +1,14 @@
+﻿@model List<MvcMusicStore.Models.Album>
+
+    @{
+        ViewBag.Title = "Select";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Select</h2>
+    @Html.Partial("MenuLinqExample")<br/><br/>
+
+@foreach (var albums in Model)
+{
+    @Html.DisplayFor(a => albums.Title) <br/>  
+}

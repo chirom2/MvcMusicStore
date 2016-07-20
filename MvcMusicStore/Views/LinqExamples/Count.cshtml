@@ -1,0 +1,12 @@
+﻿@model MvcMusicStore.ViewModels.CountVm
+
+@{
+    ViewBag.Title = "Count";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Count</h2>
+
+@Html.DisplayFor(count => count.CountAlbum) Albums<br/>
+@Html.DisplayFor(count => count.CountArtist) Artists<br/>
+@Html.DisplayFor(count => count.CountGenre) Genres<br/>

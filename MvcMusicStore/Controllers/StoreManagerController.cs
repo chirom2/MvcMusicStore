@@ -63,12 +63,14 @@ namespace MvcMusicStore.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var album = new Album();
-                    album.ArtistId = vm.ArtistId;
-                    album.GenreId = vm.GenreId;
-                    album.Title = vm.title;
-                    album.Price = vm.price;
-                    album.AlbumArtUrl = vm.albumArtUrl;
+                    var album = new Album
+                    {
+                        ArtistId = vm.ArtistId,
+                        GenreId = vm.GenreId,
+                        Title = vm.title,
+                        Price = vm.price,
+                        AlbumArtUrl = vm.albumArtUrl
+                    };
 
                     db.Albums.Add(album);
                     db.SaveChanges();
@@ -92,19 +94,23 @@ namespace MvcMusicStore.Controllers
                     .Single(a => a.AlbumId == id);
 
                 var itemsGenres = db.Genres.Select(g => new {Value = g.GenreId, Text = g.Name});
-                var itemsArtist = db.Artists.Select(a => new { Value = a.ArtistId,Text = a.Name });
+                
+                var itemsArtist = db.Artists.Select(a => 
+                    new { Value = a.ArtistId,Text = a.Name });
 
-                var editVM = new EditVM();
-                editVM.id = album.AlbumId;
-                editVM.title = album.Title;
-                editVM.ArtistId = album.ArtistId;
-                editVM.GenreId = album.GenreId;
-                editVM.price = album.Price;
-                editVM.albumArtUrl = album.AlbumArtUrl;
-                editVM.GenreList = new SelectList(itemsGenres.ToList(), "Value", "Text");
-                editVM.ArtistList = new SelectList(itemsArtist.ToList(), "Value", "Text");
+                var editVm = new EditVM
+                {
+                    id = album.AlbumId,
+                    title = album.Title,
+                    ArtistId = album.ArtistId,
+                    GenreId = album.GenreId,
+                    price = album.Price,
+                    albumArtUrl = album.AlbumArtUrl,
+                    GenreList = new SelectList(itemsGenres.ToList(), "Value", "Text"),
+                    ArtistList = new SelectList(itemsArtist.ToList(), "Value", "Text")
+                };
 
-                return View(editVM);
+                return View(editVm);
             }
         }
 
@@ -117,8 +123,6 @@ namespace MvcMusicStore.Controllers
             {
                     if (ModelState.IsValid)
                     {
-
-
                         var album = db.Albums.Single(a => a.AlbumId == vm.id);
                         album.AlbumId = vm.id;
                         album.ArtistId = vm.ArtistId;
@@ -128,8 +132,7 @@ namespace MvcMusicStore.Controllers
                         album.AlbumArtUrl = vm.albumArtUrl;
                         db.Entry(album).State = EntityState.Modified;
                         db.SaveChanges();
-                        return RedirectToAction("Index");
-                        
+                        return RedirectToAction("Index");                      
                     }
                     else
                     {

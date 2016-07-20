@@ -125,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LinqExamplesController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\StoreManagerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -137,8 +138,10 @@
     <Compile Include="Models\MusicStoreEntities.cs" />
     <Compile Include="Models\SampleData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CountVm.cs" />
     <Compile Include="ViewModels\CreateVM.cs" />
     <Compile Include="ViewModels\EditVM.cs" />
+    <Compile Include="ViewModels\SelectManyVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -161,6 +164,11 @@
     <Content Include="Views\StoreManager\Delete.cshtml" />
     <Content Include="Views\StoreManager\Edit.cshtml" />
     <Content Include="Views\StoreManager\Create.cshtml" />
+    <Content Include="Views\LinqExamples\Index.cshtml" />
+    <Content Include="Views\Shared\MenuLinqExample.cshtml" />
+    <Content Include="Views\LinqExamples\Select.cshtml" />
+    <Content Include="Views\LinqExamples\Any.cshtml" />
+    <Content Include="Views\LinqExamples\Count.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
