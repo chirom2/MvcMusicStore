@@ -10,7 +10,7 @@ namespace MvcMusicStore.ViewModels
 {
     public class EditVM
     {
-        public int id;
+        public int id { get; set; }
 
         [DisplayName("Title")]
         public string title { get; set; }

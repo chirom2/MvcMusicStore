@@ -126,6 +126,7 @@
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LinqExamplesController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\StoreManagerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -150,6 +151,7 @@
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\dashboard.css" />
     <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\search.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -169,6 +171,9 @@
     <Content Include="Views\LinqExamples\Select.cshtml" />
     <Content Include="Views\LinqExamples\Any.cshtml" />
     <Content Include="Views\LinqExamples\Count.cshtml" />
+    <Content Include="Views\LinqExamples\SelectMany.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Search\DisplayResult.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

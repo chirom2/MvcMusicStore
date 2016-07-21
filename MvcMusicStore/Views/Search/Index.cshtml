@@ -1,0 +1,22 @@
+﻿@using System.Web.Script.Services
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Javascript
+{
+    <script type="text/javascript" src="@Url.Content("~/Assets/js/search.js")"></script>
+}
+
+<h2>Search</h2>
+<div class="row">
+    <div class="col-lg-6">
+        <input type="text" class="form-control" id="searchField" placeholder="Search" value=""/>
+    </div>
+    <input type="button" class="btn btn-success" id="searchButton" value="Search"/>
+</div>
+<div id="resultSearch">
+
+
+</div>
